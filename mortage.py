@@ -20,6 +20,8 @@ def calculate(amt_borrowed,downpay,interest,term):
 	return P,total_interest,total_pym
 
 
+
+
 '''
 User interaction begins here.
 	1. Collect user input
@@ -27,20 +29,11 @@ User interaction begins here.
 	3. Use the result from the function to dump json
 '''
 
-a = float(input("amount: "))
-b = float(input("downpayment: "))
-c = float(input("interest: "))
-d = int(input("term: "))
+def collect_input():
+	a = float(input("amount: "))
+	b = float(input("downpayment: "))
+	c = float(input("interest: "))
+	d = int(input("term: "))
+	return a,b,c,d
 
-#Pass the four arguments in the correct order
-monthly_loan,total_interest,total_pym=calculate(a,b,c,d)
 
-#Convert the result to a dictionary then dump it to json
-#use round to maintain the required decimal places
-d = {
-    "monthly payment": round(monthly_loan, 2), 
-    "total interest": round(total_interest, 2), 
-    "total payment": round(total_pym, 2)
-    }
-json_ouput = json.dumps(d)
-print(json_ouput)
